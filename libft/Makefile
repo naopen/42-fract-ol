@@ -6,16 +6,17 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 17:01:53 by nkannan           #+#    #+#              #
-#    Updated: 2024/03/23 04:31:11 by nkannan          ###   ########.fr        #
+#    Updated: 2024/03/23 06:48:58 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CTYPE_SRCS		=	ctype/ft_isalnum.c ctype/ft_isalpha.c ctype/ft_isascii.c \
 					ctype/ft_isdigit.c ctype/ft_isprint.c ctype/ft_tolower.c \
-					ctype/ft_toupper.c
+					ctype/ft_toupper.c ctype/ft_isdouble.c
 STDIO_SRCS		=	stdio/ft_putchar_fd.c stdio/ft_putendl_fd.c \
 					stdio/ft_putnbr_fd.c stdio/ft_putstr_fd.c
-STDLIB_SRCS		=	stdlib/ft_atoi.c stdlib/ft_calloc.c stdlib/ft_itoa.c
+STDLIB_SRCS		=	stdlib/ft_atoi.c stdlib/ft_calloc.c stdlib/ft_itoa.c \
+					stdlib/ft_atof.c
 STRING_SRCS		=	string/ft_bzero.c string/ft_memchr.c string/ft_memcmp.c \
 					string/ft_memcpy.c string/ft_memmove.c string/ft_memset.c \
 					string/ft_split.c string/ft_strchr.c string/ft_strdup.c \

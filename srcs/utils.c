@@ -6,40 +6,58 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:07:24 by nkannan           #+#    #+#             */
-/*   Updated: 2024/03/23 05:31:45 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/03/23 06:46:28 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/utils.h"
 #include "../libft/libft.h"
 
-static void	error_msg(char *str)
+static void	color_msg(char *color, char *msg, int fd)
 {
-	ft_putendl_fd(str, 2);
+	ft_putstr_fd(color, fd);
+	ft_putendl_fd(msg, fd);
+	ft_putstr_fd("\x1b[0m", fd);
 }
 
-static void	usage_msg(void)
+static void	error_msg(char *msg)
 {
-	ft_putstr_fd("\x1b[31m", 2);
-	error_msg("Error : Invalid input");
+	color_msg("\x1b[31m", msg, 2);
+}
+
+static void	usage_msg_and_exit(void)
+{
+	ft_putendl_fd("", 2);
+	color_msg("\x1b[31m", "Usage : ./fractol mandelbrot", 2);
+	color_msg("\x1b[31m", "        ./fractol julia [number1] [number2]", 2);
+	ft_putendl_fd("", 2);
+	color_msg("\033[1;34m", "Tips  : The numbers must be between -2 to 2.", 2);
+	color_msg("\033[1;34m", "Recomend :", 2);
+	color_msg("\033[1;34m", "        ./fractol julia 0 0.67", 2);
+	color_msg("\033[1;34m", "        ./fractol julia 0.116 0.66", 2);
 	exit(1);
 }
 
 void	validates_args(int argc, char *argv[])
 {
-	if (argc != 5)
+	if (argc != 2 && argc != 4 || argc == 4 && ft_strncmp(argv[1], "mandelbrot",
+			10) == 0 || argc == 2 && ft_strncmp(argv[1], "julia", 5 == 0))
 	{
-		printf("Error: Invalid number of arguments\n");
-		exit(1);
+		error_msg("Error : Invalid number of arguments.");
+		usage_msg_and_exit();
 	}
-	if (ft_strlen(argv[1]) != 1 || ft_strlen(argv[2]) != 1)
+	else if (ft_strncmp(argv[1], "mandelbrot", 10) != 0 && ft_strncmp(argv[1],
+			"julia", 5) != 0)
 	{
-		printf("Error: Invalid operator\n");
-		exit(1);
+		error_msg("Error : Invalid fractal name.");
+		usage_msg_and_exit();
 	}
-	if (ft_strlen(argv[3]) == 0 || ft_strlen(argv[4]) == 0)
+	else if (argc == 4)
 	{
-		printf("Error: Invalid number\n");
-		exit(1);
+		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3] || ft_atof(argv[2]) <
+				-2 || ft_atof(argv[2]) > 2 || ft_atof(argv[3]) < -2
+				|| ft_atof(argv[3]) > 2))
+			error_msg("Error : Invalid number format.");
+		usage_msg_and_exit();
 	}
 }
