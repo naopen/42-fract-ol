@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 20:55:28 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/19 23:26:12 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ typedef struct s_fractol
 	int		width;
 	int		height;
 }			t_fractol;
+
+void	validates_args(int argc, char *argv[]);
+void	plot_pixel(t_fractol *fractol, int x, int y, int color);
+void	draw_fractol(t_fractol *fractol);
 
 #endif
