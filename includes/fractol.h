@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 16:03:18 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/19 19:37:03 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define WIDTH 800
+# define HEIGHT 800
+
+# define MAX_ITER 100
+# define ZOOM 1.1
+# define MOVE 0.1
+
+# define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+# define WHITE 0x00FFFFFF
+# define BLACK 0x00000000
 
 typedef struct s_image
 {
@@ -31,7 +44,7 @@ typedef struct s_fractol
 {
 	void	*mlx;
 	void	*win;
-	t_image	img;
+	t_image	image;
 	int		width;
 	int		height;
 }			t_fractol;
