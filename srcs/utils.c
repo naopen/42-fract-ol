@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:07:24 by nkannan           #+#    #+#             */
-/*   Updated: 2024/03/23 06:46:28 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/19 19:10:57 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static void	color_msg(char *color, char *msg, int fd)
 static void	error_msg(char *msg)
 {
 	color_msg("\x1b[31m", msg, 2);
+}
+
+static void	malloc_error(void)
+{
+	error_msg("Error : Malloc failed.");
+	exit(1);
 }
 
 static void	usage_msg_and_exit(void)
@@ -54,7 +60,7 @@ void	validates_args(int argc, char *argv[])
 	}
 	else if (argc == 4)
 	{
-		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3] || ft_atof(argv[2]) <
+		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3] || ft_atof(argv[2]) < \
 				-2 || ft_atof(argv[2]) > 2 || ft_atof(argv[3]) < -2
 				|| ft_atof(argv[3]) > 2))
 			error_msg("Error : Invalid number format.");
