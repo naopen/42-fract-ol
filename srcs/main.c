@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:56:53 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 00:00:29 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 01:00:05 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	init_fractol(t_fractol *fractol)
 {
 	fractol->width = WIDTH;
 	fractol->height = HEIGHT;
+	fractol->zoom = ZOOM;
+	fractol->move_x = 0;
+	fractol->move_y = 0;
 	fractol->mlx = mlx_init();
 	if (!fractol->mlx)
 		malloc_error();
@@ -54,6 +57,7 @@ int	main(int argc, char *argv[])
 	validates_args(argc, argv);
 	init_fractol(&fractol);
 	setup_image(&fractol);
+	init_hooks(&fractol);
 	mlx_loop(fractol.mlx);
 	return (0);
 }

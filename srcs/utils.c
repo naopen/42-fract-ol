@@ -6,12 +6,11 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:07:24 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 00:04:56 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 00:37:59 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-#include "../libft/libft.h"
 
 static void	color_msg(char *color, char *msg, int fd)
 {
@@ -62,9 +61,9 @@ void	validates_args(int argc, char *argv[])
 	}
 	else if (argc == 4)
 	{
-		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3] || ft_atof(argv[2]) < \
-				-2 || ft_atof(argv[2]) > 2 || ft_atof(argv[3]) < -2
-				|| ft_atof(argv[3]) > 2))
+		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3]) || \
+		ft_atof(argv[2]) < -2 || ft_atof(argv[2]) > 2 || \
+		ft_atof(argv[3]) < -2 || ft_atof(argv[3]) > 2)
 		{
 			error_msg("Error : Invalid number format.");
 			usage_msg_and_exit();

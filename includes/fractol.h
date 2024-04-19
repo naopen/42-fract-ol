@@ -6,13 +6,14 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 23:38:10 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 01:00:19 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -25,6 +26,8 @@
 # define MAX_ITER 100
 # define ZOOM 1.1
 # define MOVE 0.1
+
+# define ESC 53
 
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
@@ -47,6 +50,9 @@ typedef struct s_fractol
 	t_image	image;
 	int		width;
 	int		height;
+	double	zoom;
+	double	move_x;
+	double	move_y;
 }			t_fractol;
 
 void	validates_args(int argc, char *argv[]);
@@ -54,5 +60,7 @@ void	malloc_error(void);
 
 void	plot_pixel(t_fractol *fractol, int x, int y, int color);
 void	draw_fractol(t_fractol *fractol);
+
+void	init_hooks(t_fractol *fractol);
 
 #endif
