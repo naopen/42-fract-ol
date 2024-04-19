@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:07:24 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 23:00:55 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/19 23:08:53 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	validates_args(int argc, char *argv[])
 	else if (ft_strncmp(argv[1], "mandelbrot", 10) != 0 && ft_strncmp(argv[1],
 			"julia", 5) != 0)
 	{
-		error_msg("Error : Invalid fractal name.");
+		error_msg("Error : Invalid fractol name.");
 		usage_msg_and_exit();
 	}
 	else if (argc == 4)

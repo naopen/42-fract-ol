@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 23:02:06 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/19 23:08:53 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	plot_pixel(t_fractol *fractol, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	draw_fractal(t_fractol *fractol)
+void	draw_fractol(t_fractol *fractol)
 {
 	int	x;
 	int	y;

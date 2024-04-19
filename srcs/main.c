@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:56:53 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 23:01:57 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/19 23:08:53 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	setup_image(t_fractol *fractol)
 	fractol->image.pixels = mlx_get_data_addr(fractol->image.img,
 			&fractol->image.bpp, &fractol->image.line_size,
 			&fractol->image.endian);
-	draw_fractal(fractol);
+	draw_fractol(fractol);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->image.img, 0,
 		0);
 }

@@ -6,7 +6,7 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:02:48 by nkannan           #+#    #+#              #
-#    Updated: 2024/04/19 23:05:40 by nkannan          ###   ########.fr        #
+#    Updated: 2024/04/19 23:08:53 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 SRC_DIR = srcs
 OBJ_DIR = objs
 INC_DIR = includes
-SRCS = fractal.c main.c utils.c
+SRCS = fractol.c main.c utils.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 NAME = fractol
 
