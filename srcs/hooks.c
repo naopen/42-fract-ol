@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 20:59:30 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 22:44:42 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,18 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 	return (0);
 }
 
+static int	close_window(t_fractol *fractol)
+{
+	(void)fractol;
+	mlx_destroy_window(fractol->mlx, fractol->win);
+	exit(0);
+	return (0);
+}
+
+
 void	init_hooks(t_fractol *fractol)
 {
 	mlx_key_hook(fractol->win, key_press, fractol);
 	mlx_mouse_hook(fractol->win, mouse_hook, fractol);
+	mlx_hook(fractol->win, 17, 0, close_window, fractol);
 }
