@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 00:59:28 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 20:59:30 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 	(void)y;
 	if (button == 4)
 	{
-		fractol->zoom *= 1.1;
+		fractol->zoom *= ZOOM;
 		draw_fractol(fractol);
 	}
 	else if (button == 5)
 	{
-		fractol->zoom /= 1.1;
+		fractol->zoom /= ZOOM;
 		draw_fractol(fractol);
 	}
 	return (0);

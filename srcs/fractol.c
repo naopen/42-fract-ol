@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 01:27:45 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 21:16:24 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	draw_fractol(t_fractol *fractol)
 		x = 0;
 		while (x < fractol->width)
 		{
-			if (ft_strncmp("mandelbrot", "mandelbrot", 10) == 0)
+			if (ft_strncmp(fractol->type, "mandelbrot", 10) == 0)
 				draw_mandelbrot(fractol, x, y);
-			else if (ft_strncmp("julia", "julia", 5) == 0)
+			else if (ft_strncmp(fractol->type, "julia", 5) == 0)
 				draw_julia(fractol, x, y);
 			x++;
 		}

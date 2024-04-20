@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:56:53 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 01:00:05 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/20 21:16:54 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(int argc, char *argv[])
 	t_fractol	fractol;
 
 	validates_args(argc, argv);
+	fractol.type = argv[1];
 	init_fractol(&fractol);
 	setup_image(&fractol);
 	init_hooks(&fractol);
