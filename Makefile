@@ -6,13 +6,13 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:02:48 by nkannan           #+#    #+#              #
-#    Updated: 2024/04/21 21:30:38 by nkannan          ###   ########.fr        #
+#    Updated: 2024/04/22 01:16:24 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -Imlx -Lmlx -lmlx -framework OpenGL -framework AppKit
 SANITIZE = -fsanitize=address -g
 
 LIBFT = libft/libft.a
