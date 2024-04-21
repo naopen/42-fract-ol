@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:56:53 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 19:18:01 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:35:15 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	init_fractol(t_fractol *fractol)
 {
 	fractol->width = WIDTH;
 	fractol->height = HEIGHT;
-	fractol->move_x = 0;
-	fractol->move_y = 0;
+	fractol->zoom = 1.0;
+	fractol->offset_x = 0;
+	fractol->offset_y = 0;
 	fractol->mlx = mlx_init();
 	if (!fractol->mlx)
 		malloc_error();
@@ -55,8 +56,8 @@ int	main(int argc, char *argv[])
 	fractol.type = argv[1];
 	if (argc == 4)
 	{
-		fractol.move_x = ft_atof(argv[2]);
-		fractol.move_y = ft_atof(argv[3]);
+		fractol.offset_x = ft_atof(argv[2]);
+		fractol.offset_y = ft_atof(argv[3]);
 	}
 	init_fractol(&fractol);
 	setup_image(&fractol);

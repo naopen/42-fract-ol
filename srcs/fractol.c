@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 18:31:27 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:49:27 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	double	z_re;
 	double	z_im;
 
-	c_re = (x - fractol->width / 2.0) * 4.0 / fractol->width;
-	c_im = (y - fractol->height / 2.0) * 4.0 / fractol->height;
+	c_re = (x - fractol->width / 1.5) / fractol->width * 4.0 * fractol->zoom;
+	c_im = (y - fractol->height / 2.0) / fractol->height * 4.0 * fractol->zoom;
 	z_re = 0;
 	z_im = 0;
 	if (ft_strcmp(fractal_type, MANDELBROT) == 0)
@@ -59,8 +59,8 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	{
 		c_re = JULIA_RE;
 		c_im = JULIA_IM;
-		z_re = (x - fractol->width / 2.0) * 4.0 / fractol->width;
-		z_im = (y - fractol->height / 2.0) * 4.0 / fractol->height;
+		z_re = (x - fractol->width / 1.5) / fractol->width * 4.0 * fractol->zoom;
+		z_im = (y - fractol->height / 2.0) / fractol->height * 4.0 * fractol->zoom;
 		plot_pixel(fractol, x, y, calculate_fractal_pixel(z_re, z_im, c_re,
 				c_im) * BLUE);
 	}
@@ -72,12 +72,9 @@ void	draw_fractol(t_fractol *fractol)
 	int	y;
 
 	if (fractol->image.img != NULL)
-		mlx_destroy_image(fractol->mlx, fractol->image.img);
-	fractol->image.img = mlx_new_image(fractol->mlx, fractol->width,
-			fractol->height);
-	fractol->image.pixels = mlx_get_data_addr(fractol->image.img,
-			&fractol->image.bpp, &fractol->image.line_size,
-			&fractol->image.endian);
+		mlx_destroy_image(fractol->mlx, fractol->image.img); // 既存のイメージを破棄
+	fractol->image.img = mlx_new_image(fractol->mlx, fractol->width, fractol->height); // 新しいイメージを生成
+	fractol->image.pixels = mlx_get_data_addr(fractol->image.img, &fractol->image.bpp, &fractol->image.line_size, &fractol->image.endian);
 	y = 0;
 	while (y < fractol->height)
 	{
@@ -89,6 +86,5 @@ void	draw_fractol(t_fractol *fractol)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->image.img, 0,
-		0);
+	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->image.img, 0, 0);
 }

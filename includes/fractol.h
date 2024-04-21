@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 19:08:54 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:28:43 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_fractol
 	int		width;
 	int		height;
 	double	zoom;
-	double	move_x;
-	double	move_y;
+	double	offset_x;
+	double	offset_y;
 	char	*type;
 }			t_fractol;
 
