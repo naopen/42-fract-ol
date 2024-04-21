@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 08:45:48 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 17:36:41 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 23:46:23 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <math.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -56,6 +57,8 @@ void	ft_putendl_fd(char *str, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 int		ft_isdouble(char *str);
+int		ft_isblank(int c);
+int		ft_isspace(int c);
 double	ft_atof(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 

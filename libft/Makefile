@@ -6,13 +6,14 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 17:01:53 by nkannan           #+#    #+#              #
-#    Updated: 2024/04/21 17:37:18 by nkannan          ###   ########.fr        #
+#    Updated: 2024/04/21 23:46:01 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CTYPE_SRCS		=	ctype/ft_isalnum.c ctype/ft_isalpha.c ctype/ft_isascii.c \
 					ctype/ft_isdigit.c ctype/ft_isprint.c ctype/ft_tolower.c \
-					ctype/ft_toupper.c ctype/ft_isdouble.c
+					ctype/ft_toupper.c ctype/ft_isdouble.c ctype/ft_isblank.c \
+					ctype/ft_isspace.c
 STDIO_SRCS		=	stdio/ft_putchar_fd.c stdio/ft_putendl_fd.c \
 					stdio/ft_putnbr_fd.c stdio/ft_putstr_fd.c
 STDLIB_SRCS		=	stdlib/ft_atoi.c stdlib/ft_calloc.c stdlib/ft_itoa.c \

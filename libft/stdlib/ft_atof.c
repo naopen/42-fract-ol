@@ -6,52 +6,95 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 06:49:37 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 23:37:29 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 23:41:24 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static void	ft_atof_helper(const char *str, int *i, double *frac_part, int *neg)
+static double	check_inf_nan(const char *str, int sign)
 {
-	while (str[*i] && str[*i] != '.')
-		(*i)++;
-	if (str[*i] == '.')
+	if (ft_strncmp(str, "inf", 3) == 0 || ft_strncmp(str, "infinity", 8) == 0)
+		return (INFINITY * sign);
+	if (ft_strncmp(str, "nan", 3) == 0 || ft_strncmp(str, "NaN", 3) == 0)
+		return (NAN);
+	return (0);
+}
+
+static char	*move_space_char(char *str, int *sign)
+{
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
 	{
-		(*i)++;
-		*frac_part = (double)ft_atoi(str + *i);
-		while (ft_isdigit(str[*i]))
-		{
-			*frac_part /= 10;
-			(*i)++;
-		}
-		*frac_part *= *neg;
+		*sign = -1;
+		str++;
 	}
-	else
-		*frac_part = 0;
+	else if (*str == '+')
+		str++;
+	return (str);
+}
+
+static char	*after_dot(const char *str, double fraction, double *result)
+{
+	while (ft_isdigit(*str))
+	{
+		fraction *= 0.1;
+		*result += (*str - '0') * fraction;
+		str++;
+	}
+	return ((char *)str);
+}
+
+static double	after_exp(const char *str, double result)
+{
+	int	exp_sign;
+	int	exponent;
+
+	exp_sign = 1;
+	exponent = 0;
+	if (*str == '-')
+	{
+		exp_sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (ft_isdigit(*str))
+		exponent = exponent * 10 + (*str++ - '0');
+	while (exponent--)
+	{
+		if (exp_sign > 0)
+			result *= 10.0;
+		else
+			result *= 0.1;
+	}
+	return (result);
 }
 
 double	ft_atof(const char *str)
 {
 	double	result;
-	double	frac_part;
-	int		i;
-	int		neg;
+	double	fraction;
+	int		sign;
 
-	result = 0;
-	frac_part = 0;
-	i = 0;
-	neg = 1;
-	if (str[i] == '-')
+	result = 0.0;
+	fraction = 1.0;
+	sign = 1;
+	if (str == NULL)
+		return (0);
+	str = move_space_char((char *)str, &sign);
+	if (check_inf_nan(str, sign))
+		return (check_inf_nan(str, sign));
+	while (ft_isdigit(*str))
 	{
-		neg = -1;
-		i++;
+		result = result * 10.0 + (*str - '0');
+		str++;
 	}
-	else if (str[i] == '+')
-	{
-		i++;
-	}
-	result = (double)ft_atoi(str + i) * neg;
-	ft_atof_helper(str, &i, &frac_part, &neg);
-	return (result + frac_part);
+	if (*str == '.')
+		str++;
+	str = after_dot(str, fraction, &result);
+	if (*str == 'e' || *str == 'E')
+		result = after_exp(++str, result);
+	return (sign * result);
 }
