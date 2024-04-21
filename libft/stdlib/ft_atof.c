@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 06:49:37 by nkannan           #+#    #+#             */
-/*   Updated: 2024/03/23 07:13:34 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 23:37:29 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,16 @@ double	ft_atof(const char *str)
 	frac_part = 0;
 	i = 0;
 	neg = 1;
-	result = (double)ft_atoi(str);
 	if (str[i] == '-')
+	{
 		neg = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+	{
+		i++;
+	}
+	result = (double)ft_atoi(str + i) * neg;
 	ft_atof_helper(str, &i, &frac_part, &neg);
 	return (result + frac_part);
 }

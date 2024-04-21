@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 06:24:10 by nkannan           #+#    #+#             */
-/*   Updated: 2024/03/23 06:40:36 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 23:21:13 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ int	ft_isdouble_helper(char *str)
 	int	i;
 
 	i = 0;
-	if (!str)
+	if (!str || str[i] == '\0')
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (str[i] == '.')
-		return (0);
+	{
+		if (!ft_isdigit(str[i + 1]))
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
@@ -31,10 +35,10 @@ int	ft_isdouble(char *str)
 	int	i;
 	int	dot;
 
-	i = 0;
-	dot = 0;
 	if (!ft_isdouble_helper(str))
 		return (0);
+	i = 0;
+	dot = 0;
 	while (str[i])
 	{
 		if (str[i] == '.')
@@ -47,7 +51,5 @@ int	ft_isdouble(char *str)
 			return (0);
 		i++;
 	}
-	if (str[i - 1] == '.')
-		return (0);
 	return (1);
 }
