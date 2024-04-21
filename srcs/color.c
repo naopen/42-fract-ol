@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:48:39 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 21:41:48 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 21:52:33 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ t_color	hsv_to_rgb(double h, double s, double v)
 	return (color);
 }
 
-int	calculate_color(int iteration)
+int	calculate_color(int iteration, t_fractol *fractol)
 {
 	int				hue;
 	t_color			color_value;
 	unsigned int	color;
 
-	hue = iteration % 360;
+	hue = (iteration + fractol->color_shift) % 360;
 	if (iteration < MAX_ITER)
 		color_value = hsv_to_rgb(hue, 1, 1);
 	else
