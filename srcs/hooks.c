@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 21:52:02 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 22:26:04 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,40 @@ static int	key_press(int keycode, t_fractol *fractol)
 	return (0);
 }
 
-static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
+void	update_zoom_and_color(int button, t_fractol *fractol, double *new_zoom,
+		double *interpolation)
 {
-	(void)x;
-	(void)y;
 	if (button == 4)
 	{
 		fractol->color_shift += 10;
-		if (fractol->zoom > 0.1)
-			fractol->zoom *= ZOOM_IN;
+		*new_zoom = fractol->zoom * ZOOM_IN;
+		*interpolation = 1.0 / ZOOM_IN;
 	}
 	else if (button == 5)
 	{
 		fractol->color_shift -= 10;
-		fractol->zoom *= ZOOM_OUT;
+		*new_zoom = fractol->zoom * ZOOM_OUT;
+		*interpolation = 1.0 / ZOOM_OUT;
 	}
+}
+
+static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
+{
+	double	mouse_re;
+	double	mouse_im;
+	double	new_zoom;
+	double	interpolation;
+
+	mouse_re = (double)(x - fractol->width / 2) / (0.5 * fractol->zoom
+			* fractol->width) + fractol->offset_x;
+	mouse_im = (double)(y - fractol->height / 2) / (0.5 * fractol->zoom
+			* fractol->height) + fractol->offset_y;
+	update_zoom_and_color(button, fractol, &new_zoom, &interpolation);
+	fractol->offset_x = mouse_re + ((fractol->offset_x - mouse_re)
+			* interpolation);
+	fractol->offset_y = mouse_im + ((fractol->offset_y - mouse_im)
+			* interpolation);
+	fractol->zoom = new_zoom;
 	draw_fractol(fractol);
 	return (0);
 }

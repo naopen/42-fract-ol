@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 21:53:09 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 22:22:25 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,24 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	double	z_im;
 	int		iteration;
 
-	c_re = (x - fractol->width / 2.0) / fractol->width * 4.0 * fractol->zoom;
-	c_im = (y - fractol->height / 2.0) / fractol->height * 4.0 * fractol->zoom;
+	c_re = (x - fractol->width / 2.0) / (fractol->width / (fractol->zoom * 4))
+		+ fractol->offset_x;
+	c_im = (y - fractol->height / 2.0) / (fractol->height / (fractol->zoom * 4))
+		+ fractol->offset_y;
 	z_re = 0;
 	z_im = 0;
 	iteration = 0;
-	if (ft_strcmp(fractal_type, MANDELBROT) == 0)
-		iteration = calculate_fractal_pixel(z_re, z_im, c_re, c_im);
-	else if (ft_strcmp(fractal_type, JULIA) == 0)
+	if (ft_strcmp(fractal_type, JULIA) == 0)
 	{
 		c_re = fractol->julia_re;
 		c_im = fractol->julia_im;
-		z_re = (x - fractol->width / 2.0) / fractol->width * 4.0
-			* fractol->zoom;
-		z_im = (y - fractol->height / 2.0) / fractol->height * 4.0
-			* fractol->zoom;
+		z_re = (x - fractol->width / 2.0) / (fractol->width / (fractol->zoom
+					* 4)) + fractol->offset_x;
+		z_im = (y - fractol->height / 2.0) / (fractol->height / (fractol->zoom
+					* 4)) + fractol->offset_y;
 		iteration = calculate_fractal_pixel(z_re, z_im, c_re, c_im);
 	}
+	iteration = calculate_fractal_pixel(z_re, z_im, c_re, c_im);
 	plot_pixel(fractol, x, y, calculate_color(iteration, fractol));
 }
 
