@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 21:16:24 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 17:01:09 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ void	draw_fractol(t_fractol *fractol)
 	int	x;
 	int	y;
 
+	if (fractol->image.img != NULL)
+		mlx_destroy_image(fractol->mlx, fractol->image.img);
+
+	fractol->image.img = mlx_new_image(fractol->mlx, fractol->width, fractol->height);
+	fractol->image.pixels = mlx_get_data_addr(fractol->image.img, &fractol->image.bpp, &fractol->image.line_size, &fractol->image.endian);
+
 	y = 0;
 	while (y < fractol->height)
 	{
@@ -92,4 +98,6 @@ void	draw_fractol(t_fractol *fractol)
 		}
 		y++;
 	}
+
+	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->image.img, 0, 0);
 }
