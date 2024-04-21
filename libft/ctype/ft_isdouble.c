@@ -6,35 +6,34 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 23:47:58 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 23:48:03 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/22 00:03:41 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_isdouble(char *str)
+bool	ft_isdouble(char *str)
 {
-	int	i;
-	int	dot_count;
+	size_t	i;
+	bool	is_dot;
 
+	is_dot = false;
 	i = 0;
-	dot_count = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (str[i] == '.')
-		return (1);
+	if (str == NULL || *str == '\0')
+		return (false);
+	if (*str == '-')
+		str++;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (str[i] == '.')
 		{
-			if (str[i] == '.' && dot_count == 0)
-				dot_count++;
-			else
-				return (1);
+			if (is_dot)
+				return (false);
+			is_dot = true;
 		}
+		else if (!ft_isdigit(str[i]))
+			return (false);
 		i++;
 	}
-	if (str[i - 1] == '.')
-		return (1);
-	return (0);
+	return (true);
 }
