@@ -6,7 +6,7 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:02:48 by nkannan           #+#    #+#              #
-#    Updated: 2024/04/21 18:54:36 by nkannan          ###   ########.fr        #
+#    Updated: 2024/04/21 21:30:38 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT_DIR = libft
 SRC_DIR = srcs
 OBJ_DIR = objs
 INC_DIR = includes
-SRCS = fractol.c main.c utils.c hooks.c
+SRCS = fractol.c main.c utils.c hooks.c color.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 NAME = fractol
 

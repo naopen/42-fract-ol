@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 20:29:14 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 21:30:11 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ typedef struct s_fractol
 	double	julia_im;
 }			t_fractol;
 
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+	int	color;
+}				t_color;
+
 void	validates_args(int argc, char *argv[]);
 void	malloc_error(void);
 
@@ -72,5 +80,7 @@ void	plot_pixel(t_fractol *fractol, int x, int y, int color);
 void	draw_fractol(t_fractol *fractol);
 
 void	init_hooks(t_fractol *fractol);
+
+int calculate_color(int iteration);
 
 #endif
