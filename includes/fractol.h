@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 17:06:44 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:08:54 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define HEIGHT 800
 
 # define MAX_ITER 100
-# define ZOOM 1.1
+# define ZOOM_IN 0.9
+# define ZOOM_OUT 1.1
 # define MOVE 0.1
 
 # define MANDELBROT "mandelbrot"

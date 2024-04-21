@@ -6,13 +6,14 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:02:48 by nkannan           #+#    #+#              #
-#    Updated: 2024/04/20 01:03:26 by nkannan          ###   ########.fr        #
+#    Updated: 2024/04/21 18:54:36 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+SANITIZE = -fsanitize=address -g
 
 LIBFT = libft/libft.a
 LIBFT_DIR = libft
@@ -46,4 +47,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+leak: $(LIBFT)
+	$(CC) $(SRCS:%=$(SRC_DIR)/%) $(LIBFT) $(CFLAGS) $(SANITIZE) -I$(INC_DIR) -I$(LIBFT_DIR) $(MLXFLAGS) -o $(NAME)
+	./$(NAME) julia 0 0.67
+
+.PHONY: all clean fclean re leak

@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/20 22:44:42 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:17:19 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,19 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 	(void)y;
 	if (button == 4)
 	{
-		fractol->zoom *= ZOOM;
+		if (fractol->zoom > 0.1)
+			fractol->zoom *= ZOOM_IN;
 		draw_fractol(fractol);
 	}
 	else if (button == 5)
 	{
-		fractol->zoom /= ZOOM;
+		fractol->zoom *= ZOOM_OUT;
 		draw_fractol(fractol);
 	}
 	return (0);
 }
+
+
 
 static int	close_window(t_fractol *fractol)
 {
@@ -50,7 +53,7 @@ static int	close_window(t_fractol *fractol)
 
 void	init_hooks(t_fractol *fractol)
 {
-	mlx_key_hook(fractol->win, key_press, fractol);
 	mlx_mouse_hook(fractol->win, mouse_hook, fractol);
+	mlx_key_hook(fractol->win, key_press, fractol);
 	mlx_hook(fractol->win, 17, 0, close_window, fractol);
 }
