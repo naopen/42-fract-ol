@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 19:50:40 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:57:49 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	double	z_re;
 	double	z_im;
 
-	c_re = (x - fractol->width / 1.5) / fractol->width * 4.0 * fractol->zoom;
+	c_re = (x - fractol->width / 2.0) / fractol->width * 4.0 * fractol->zoom;
 	c_im = (y - fractol->height / 2.0) / fractol->height * 4.0 * fractol->zoom;
 	z_re = 0;
 	z_im = 0;
@@ -59,7 +59,7 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	{
 		c_re = JULIA_RE;
 		c_im = JULIA_IM;
-		z_re = (x - fractol->width / 1.5) / fractol->width * 4.0
+		z_re = (x - fractol->width / 2.0) / fractol->width * 4.0
 			* fractol->zoom;
 		z_im = (y - fractol->height / 2.0) / fractol->height * 4.0
 			* fractol->zoom;
