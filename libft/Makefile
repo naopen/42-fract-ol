@@ -6,7 +6,7 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 17:01:53 by nkannan           #+#    #+#              #
-#    Updated: 2024/03/23 06:48:58 by nkannan          ###   ########.fr        #
+#    Updated: 2024/04/21 17:37:18 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ STRING_SRCS		=	string/ft_bzero.c string/ft_memchr.c string/ft_memcmp.c \
 					string/ft_striteri.c string/ft_strjoin.c string/ft_strlcat.c \
 					string/ft_strlcpy.c string/ft_strlen.c string/ft_strmapi.c \
 					string/ft_strncmp.c string/ft_strnstr.c string/ft_strrchr.c \
-					string/ft_strtrim.c string/ft_substr.c
+					string/ft_strtrim.c string/ft_substr.c \
+					string/ft_strcmp.c
 
 
 SRCS			= $(CTYPE_SRCS) $(STDIO_SRCS) $(STDLIB_SRCS) $(STRING_SRCS)

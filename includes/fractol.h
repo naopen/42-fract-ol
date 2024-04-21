@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 16:58:00 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 17:06:44 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define MAX_ITER 100
 # define ZOOM 1.1
 # define MOVE 0.1
+
+# define MANDELBROT "mandelbrot"
+# define JULIA "julia"
 
 # define JULIA_RE -0.7
 # define JULIA_IM 0.27015

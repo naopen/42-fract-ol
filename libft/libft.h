@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 08:45:48 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/19 23:20:17 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 17:36:41 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	ft_putnbr_fd(int n, int fd);
 
 int		ft_isdouble(char *str);
 double	ft_atof(const char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
