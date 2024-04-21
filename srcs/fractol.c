@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 18:28:35 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 18:31:27 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ int	calculate_fractal_pixel(double z_re, double z_im, double c_re, double c_im)
 void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 		const char *fractal_type)
 {
-	double c_re, c_im;
-	double z_re, z_im;
+	double	c_re;
+	double	c_im;
+	double	z_re;
+	double	z_im;
+
 	c_re = (x - fractol->width / 2.0) * 4.0 / fractol->width;
 	c_im = (y - fractol->height / 2.0) * 4.0 / fractol->height;
 	z_re = 0;
@@ -50,7 +53,7 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	if (ft_strcmp(fractal_type, MANDELBROT) == 0)
 	{
 		plot_pixel(fractol, x, y, calculate_fractal_pixel(z_re, z_im, c_re,
-				c_im) * 0x0000FF);
+				c_im) * BLUE);
 	}
 	else if (ft_strcmp(fractal_type, JULIA) == 0)
 	{
@@ -59,7 +62,7 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 		z_re = (x - fractol->width / 2.0) * 4.0 / fractol->width;
 		z_im = (y - fractol->height / 2.0) * 4.0 / fractol->height;
 		plot_pixel(fractol, x, y, calculate_fractal_pixel(z_re, z_im, c_re,
-				c_im) * 0x0000FF);
+				c_im) * BLUE);
 	}
 }
 
