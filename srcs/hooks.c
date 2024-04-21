@@ -42,8 +42,6 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 	return (0);
 }
 
-
-
 static int	close_window(t_fractol *fractol)
 {
 	(void)fractol;
@@ -51,7 +49,6 @@ static int	close_window(t_fractol *fractol)
 	exit(0);
 	return (0);
 }
-
 
 void	init_hooks(t_fractol *fractol)
 {
