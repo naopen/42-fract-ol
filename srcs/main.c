@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:56:53 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 19:35:15 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 20:34:02 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	main(int argc, char *argv[])
 	fractol.type = argv[1];
 	if (argc == 4)
 	{
-		fractol.offset_x = ft_atof(argv[2]);
-		fractol.offset_y = ft_atof(argv[3]);
+		fractol.julia_re = ft_atof(argv[2]);
+		fractol.julia_im = ft_atof(argv[3]);
 	}
 	init_fractol(&fractol);
 	setup_image(&fractol);

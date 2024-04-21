@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 19:28:43 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 20:29:14 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_fractol
 	double	offset_x;
 	double	offset_y;
 	char	*type;
+	double	julia_re;
+	double	julia_im;
 }			t_fractol;
 
 void	validates_args(int argc, char *argv[]);
