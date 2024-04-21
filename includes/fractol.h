@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:39:32 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 22:09:20 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 22:32:02 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ZOOM_IN 0.9
 # define ZOOM_OUT 1.1
 # define COLOR_SHIFT 10
+# define MOVE_STEP 0.05
 
 # define MANDELBROT "mandelbrot"
 # define JULIA "julia"
@@ -36,6 +37,10 @@
 # define JULIA_IM 0.27015
 
 # define ESC 53
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
+# define UP_ARROW 126
+# define DOWN_ARROW 125
 
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00

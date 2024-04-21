@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 22:26:04 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/21 22:34:11 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 static int	key_press(int keycode, t_fractol *fractol)
 {
+	const double	move_step = MOVE_STEP / fractol->zoom;
+
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(fractol->mlx, fractol->win);
 		exit(0);
 	}
+	else if (keycode == LEFT_ARROW)
+		fractol->offset_x -= move_step;
+	else if (keycode == RIGHT_ARROW)
+		fractol->offset_x += move_step;
+	else if (keycode == UP_ARROW)
+		fractol->offset_y -= move_step;
+	else if (keycode == DOWN_ARROW)
+		fractol->offset_y += move_step;
+	draw_fractol(fractol);
 	return (0);
 }
 
@@ -27,13 +38,13 @@ void	update_zoom_and_color(int button, t_fractol *fractol, double *new_zoom,
 {
 	if (button == 4)
 	{
-		fractol->color_shift += 10;
+		fractol->color_shift += COLOR_SHIFT;
 		*new_zoom = fractol->zoom * ZOOM_IN;
 		*interpolation = 1.0 / ZOOM_IN;
 	}
 	else if (button == 5)
 	{
-		fractol->color_shift -= 10;
+		fractol->color_shift -= COLOR_SHIFT;
 		*new_zoom = fractol->zoom * ZOOM_OUT;
 		*interpolation = 1.0 / ZOOM_OUT;
 	}
