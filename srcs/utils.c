@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:07:24 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/30 21:32:21 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 22:58:58 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,23 @@ static void	usage_msg_and_exit(void)
 
 void	validates_args(int argc, char *argv[])
 {
-	if ((argc != 2 && argc != 4) || (argc == 2 && ft_memcmp(argv[1], "julia",
-				6) == 0) ||
+	if ((argc != 2 && argc != 4) || \
+		(argc == 2 && ft_memcmp(argv[1], "julia", 6) == 0) || \
 		(argc == 4 && ft_memcmp(argv[1], "mandelbrot", 11) == 0))
 	{
 		error_msg("Error : Invalid number of arguments.");
 		usage_msg_and_exit();
 	}
-	else if (ft_memcmp(argv[1], "mandelbrot", 11) != 0 && ft_memcmp(argv[1],
-				"julia", 6) != 0)
+	else if (ft_memcmp(argv[1], "mandelbrot", 11) != 0 && \
+		ft_memcmp(argv[1], "julia", 6) != 0)
 	{
 		error_msg("Error : Invalid fractol name.");
 		usage_msg_and_exit();
 	}
 	else if (argc == 4)
 	{
-		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3]) ||
-			ft_atof(argv[2]) < -2.0 || ft_atof(argv[2]) > 2.0 ||
+		if (!ft_isdouble(argv[2]) || !ft_isdouble(argv[3]) || \
+			ft_atof(argv[2]) < -2.0 || ft_atof(argv[2]) > 2.0 || \
 			ft_atof(argv[3]) < -2.0 || ft_atof(argv[3]) > 2.0)
 		{
 			error_msg("Error : Invalid number format.");
