@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 22:34:11 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 20:58:43 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void	update_zoom_and_color(int button, t_fractol *fractol, double *new_zoom,
 		fractol->color_shift -= COLOR_SHIFT;
 		*new_zoom = fractol->zoom * ZOOM_OUT;
 		*interpolation = 1.0 / ZOOM_OUT;
+	}
+	else
+	{
+		*new_zoom = fractol->zoom;
+		*interpolation = 1.0;
 	}
 }
 
