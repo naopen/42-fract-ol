@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/21 22:22:25 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 21:02:26 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 					* 4)) + fractol->offset_x;
 		z_im = (y - fractol->height / 2.0) / (fractol->height / (fractol->zoom
 					* 4)) + fractol->offset_y;
-		iteration = calculate_fractal_pixel(z_re, z_im, c_re, c_im);
 	}
 	iteration = calculate_fractal_pixel(z_re, z_im, c_re, c_im);
 	plot_pixel(fractol, x, y, calculate_color(iteration, fractol));
