@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/30 20:58:43 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 22:19:29 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static int	key_press(int keycode, t_fractol *fractol)
 {
-	const double	move_step = MOVE_STEP / fractol->zoom;
+	const double	move_step;
 
+	move_step = MOVE_STEP / fractol->zoom;
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(fractol->mlx, fractol->win);
@@ -57,20 +58,26 @@ void	update_zoom_and_color(int button, t_fractol *fractol, double *new_zoom,
 
 static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 {
-	double	mouse_re;
-	double	mouse_im;
+	double	mouse_x;
+	double	mouse_y;
+	double	old_zoom;
 	double	new_zoom;
 	double	interpolation;
+	double	mouse_re;
+	double	mouse_im;
 
-	mouse_re = (double)(x - fractol->width / 2) / (0.5 * fractol->zoom
-			* fractol->width) + fractol->offset_x;
-	mouse_im = (double)(y - fractol->height / 2) / (0.5 * fractol->zoom
-			* fractol->height) + fractol->offset_y;
+	mouse_x = x - (fractol->width / 2);
+	mouse_y = y - (fractol->height / 2);
+	old_zoom = fractol->zoom;
 	update_zoom_and_color(button, fractol, &new_zoom, &interpolation);
-	fractol->offset_x = mouse_re + ((fractol->offset_x - mouse_re)
-			* interpolation);
-	fractol->offset_y = mouse_im + ((fractol->offset_y - mouse_im)
-			* interpolation);
+	mouse_re = (double)mouse_x / (0.5 * old_zoom * fractol->width)
+		+ fractol->offset_x;
+	mouse_im = (double)mouse_y / (0.5 * old_zoom * fractol->height)
+		+ fractol->offset_y;
+	fractol->offset_x = mouse_re + ((fractol->offset_x - mouse_re) * new_zoom
+			/ old_zoom);
+	fractol->offset_y = mouse_im + ((fractol->offset_y - mouse_im) * new_zoom
+			/ old_zoom);
 	fractol->zoom = new_zoom;
 	draw_fractol(fractol);
 	return (0);
