@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:12:45 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/30 21:02:26 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 23:08:34 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	process_fractal_pixel(t_fractol *fractol, int x, int y,
 	z_re = 0;
 	z_im = 0;
 	iteration = 0;
-	if (ft_strcmp(fractal_type, JULIA) == 0)
+	if (ft_memcmp(fractal_type, "julia", 6) == 0)
 	{
 		c_re = fractol->julia_re;
 		c_im = fractol->julia_im;
