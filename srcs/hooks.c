@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/30 22:19:29 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 22:31:47 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static int	key_press(int keycode, t_fractol *fractol)
 {
-	const double	move_step;
+	const double	move_step = MOVE_STEP / fractol->zoom;
 
-	move_step = MOVE_STEP / fractol->zoom;
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(fractol->mlx, fractol->win);
