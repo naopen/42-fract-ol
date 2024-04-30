@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:55:16 by nkannan           #+#    #+#             */
-/*   Updated: 2024/04/30 22:56:13 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/30 22:57:16 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ static int	mouse_hook(int button, int x, int y, t_fractol *fractol)
 		(0.5 * fractol->zoom * fractol->height) + fractol->offset_y;
 	zoom[0] = fractol->zoom;
 	update_zoom_and_color(button, fractol, &zoom[1], &interpolation);
-	fractol->offset_x = mouse_re_and_im[0] + ((fractol->offset_x - mouse_re_and_im[0])
-			* zoom[1] / zoom[0]);
-	fractol->offset_y = mouse_re_and_im[1] + ((fractol->offset_y - mouse_re_and_im[1])
-			* zoom[1] / zoom[0]);
+	fractol->offset_x = mouse_re_and_im[0] + \
+		((fractol->offset_x - mouse_re_and_im[0]) * zoom[1] / zoom[0]);
+	fractol->offset_y = mouse_re_and_im[1] + \
+		((fractol->offset_y - mouse_re_and_im[1]) * zoom[1] / zoom[0]);
 	fractol->zoom = zoom[1];
 	draw_fractol(fractol);
 	return (0);
