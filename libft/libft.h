@@ -6,7 +6,7 @@
 /*   By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 08:45:48 by nkannan           #+#    #+#             */
-/*   Updated: 2024/05/03 19:20:48 by nkannan          ###   ########.fr       */
+/*   Updated: 2024/04/22 00:02:51 by nkannan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_putstr_fd(char *str, int fd);
 void	ft_putendl_fd(char *str, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-int		ft_isdouble(char *str);
+bool	ft_isdouble(char *str);
 int		ft_isblank(int c);
 int		ft_isspace(int c);
 double	ft_atof(const char *str);
