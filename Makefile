@@ -6,13 +6,14 @@
 #    By: nkannan <nkannan@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 23:02:48 by nkannan           #+#    #+#              #
-#    Updated: 2024/04/30 21:19:49 by nkannan          ###   ########.fr        #
+#    Updated: 2024/05/03 20:47:56 by nkannan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLX_DIR = mlx
+MLX = $(MLX_DIR)/libmlx.a
 MLXFLAGS = -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 SANITIZE = -fsanitize=address -g
 
@@ -26,17 +27,17 @@ SRCS = fractol.c main.c utils.c hooks.c color.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 NAME = fractol
 
-.PHONY: all clean fclean re leak $(MLX_DIR)
+.PHONY: all clean fclean re leak
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX_DIR)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
 	$(CC) $(OBJS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(MLX_DIR):
+$(MLX):
 	$(MAKE) -C $(MLX_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -55,6 +56,6 @@ fclean: clean
 
 re: fclean all
 
-leak: $(LIBFT) $(MLX_DIR)
+leak: $(LIBFT) $(MLX)
 	$(CC) $(SRCS:%=$(SRC_DIR)/%) $(LIBFT) $(CFLAGS) $(SANITIZE) -I$(INC_DIR) -I$(LIBFT_DIR) $(MLXFLAGS) -o $(NAME)
 	./$(NAME) julia 0 0.67
